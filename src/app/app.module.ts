@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { NewsModule } from './news';
 import { ToDoModule } from './todo';
 import { HomeModule } from './home';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,

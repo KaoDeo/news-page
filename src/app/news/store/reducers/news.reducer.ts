@@ -1,5 +1,6 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { NewsApiActions } from '../actions';
 import { NewsState } from '../state';
 import { NewsItem } from '../types';
 
@@ -9,4 +10,12 @@ export const initialState: NewsState = adapter.getInitialState({
   loading: false,
 });
 
-export const newsReducer = createReducer(initialState);
+export const newsReducer = createReducer(
+  initialState,
+  on(NewsApiActions.findNewsSuccess, (state, { payload }) => {
+    return adapter.setAll(payload, {
+      ...state,
+      loading: false,
+    });
+  })
+);

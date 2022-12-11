@@ -13,7 +13,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) {}
 
-  getWeatherData() {
+  getNews() {
     return this.http.get(environment.NewsApiBaseUrl, {
       headers: new HttpHeaders()
         .set(environment.XRapidAPIKeyName, environment.XRapidAPIKeyValue)
